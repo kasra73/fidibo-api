@@ -1,10 +1,10 @@
 package util
 
 import (
-	"github.com/unknwon/com"
 	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/setting"
+	"github.com/kasra73/fidibo-api/pkg/setting"
 )
 
 // GetPage get page parameters

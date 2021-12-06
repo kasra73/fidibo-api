@@ -3,21 +3,23 @@ package v1
 import (
 	"net/http"
 
-	"github.com/unknwon/com"
 	"github.com/astaxie/beego/validation"
 	"github.com/boombuler/barcode/qr"
 	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/app"
-	"github.com/EDDYCJY/go-gin-example/pkg/e"
-	"github.com/EDDYCJY/go-gin-example/pkg/qrcode"
-	"github.com/EDDYCJY/go-gin-example/pkg/setting"
-	"github.com/EDDYCJY/go-gin-example/pkg/util"
-	"github.com/EDDYCJY/go-gin-example/service/article_service"
-	"github.com/EDDYCJY/go-gin-example/service/tag_service"
+	"github.com/kasra73/fidibo-api/pkg/app"
+	"github.com/kasra73/fidibo-api/pkg/e"
+	"github.com/kasra73/fidibo-api/pkg/qrcode"
+	"github.com/kasra73/fidibo-api/pkg/setting"
+	"github.com/kasra73/fidibo-api/pkg/util"
+	"github.com/kasra73/fidibo-api/service/article_service"
+	"github.com/kasra73/fidibo-api/service/tag_service"
 )
 
 // @Summary Get a single article
+// @Security ApiKeyAuth
+// @Accept  multipart/form-data
 // @Produce  json
 // @Param id path int true "ID"
 // @Success 200 {object} app.Response
@@ -56,6 +58,7 @@ func GetArticle(c *gin.Context) {
 }
 
 // @Summary Get multiple articles
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param tag_id body int false "TagID"
 // @Param state body int false "State"
@@ -122,6 +125,7 @@ type AddArticleForm struct {
 }
 
 // @Summary Add article
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param tag_id body int true "TagID"
 // @Param title body string true "Title"
@@ -185,6 +189,7 @@ type EditArticleForm struct {
 }
 
 // @Summary Update article
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param id path int true "ID"
 // @Param tag_id body string false "TagID"
@@ -250,6 +255,7 @@ func EditArticle(c *gin.Context) {
 }
 
 // @Summary Delete article
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param id path int true "ID"
 // @Success 200 {object} app.Response

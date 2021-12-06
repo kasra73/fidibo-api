@@ -1,6 +1,6 @@
 package util
 
-import "github.com/EDDYCJY/go-gin-example/pkg/setting"
+import "github.com/kasra73/fidibo-api/pkg/setting"
 
 // Setup Initialize the util
 func Setup() {

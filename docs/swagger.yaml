@@ -3,8 +3,7 @@ definitions:
     properties:
       code:
         type: integer
-      data:
-        type: object
+      data: {}
       msg:
         type: string
     type: object
@@ -13,8 +12,8 @@ info:
   description: An example of gin
   license:
     name: MIT
-    url: https://github.com/EDDYCJY/go-gin-example/blob/master/LICENSE
-  termsOfService: https://github.com/EDDYCJY/go-gin-example
+    url: https://github.com/kasra73/fidibo-api/blob/master/LICENSE
+  termsOfService: https://github.com/kasra73/fidibo-api
   title: Golang Gin API
   version: "1.0"
 paths:
@@ -119,6 +118,8 @@ paths:
             $ref: '#/definitions/app.Response'
       summary: Delete article
     get:
+      consumes:
+      - multipart/form-data
       parameters:
       - description: ID
         in: path
@@ -209,6 +210,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - ApiKeyAuth: []
       summary: Get multiple article tags
     post:
       parameters:
@@ -323,6 +326,55 @@ paths:
       summary: Export article tag
   /api/v1/tags/import:
     post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: Excel File
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Import article tag
+  /auth:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - description: username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Authenticate
+  /upload:
+    post:
       parameters:
       - description: Image File
         in: formData
@@ -341,29 +393,9 @@ paths:
           schema:
             $ref: '#/definitions/app.Response'
       summary: Import Image
-  /auth:
-    get:
-      parameters:
-      - description: userName
-        in: query
-        name: username
-        required: true
-        type: string
-      - description: password
-        in: query
-        name: password
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/app.Response'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/app.Response'
-      summary: Get Auth
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

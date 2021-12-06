@@ -3,20 +3,21 @@ package v1
 import (
 	"net/http"
 
-	"github.com/unknwon/com"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/app"
-	"github.com/EDDYCJY/go-gin-example/pkg/e"
-	"github.com/EDDYCJY/go-gin-example/pkg/export"
-	"github.com/EDDYCJY/go-gin-example/pkg/logging"
-	"github.com/EDDYCJY/go-gin-example/pkg/setting"
-	"github.com/EDDYCJY/go-gin-example/pkg/util"
-	"github.com/EDDYCJY/go-gin-example/service/tag_service"
+	"github.com/kasra73/fidibo-api/pkg/app"
+	"github.com/kasra73/fidibo-api/pkg/e"
+	"github.com/kasra73/fidibo-api/pkg/export"
+	"github.com/kasra73/fidibo-api/pkg/logging"
+	"github.com/kasra73/fidibo-api/pkg/setting"
+	"github.com/kasra73/fidibo-api/pkg/util"
+	"github.com/kasra73/fidibo-api/service/tag_service"
 )
 
 // @Summary Get multiple article tags
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param name query string false "Name"
 // @Param state query int false "State"
@@ -62,6 +63,7 @@ type AddTagForm struct {
 }
 
 // @Summary Add article tag
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param name body string true "Name"
 // @Param state body int false "State"
@@ -113,6 +115,7 @@ type EditTagForm struct {
 }
 
 // @Summary Update article tag
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param id path int true "ID"
 // @Param name body string true "Name"
@@ -161,6 +164,7 @@ func EditTag(c *gin.Context) {
 }
 
 // @Summary Delete article tag
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param id path int true "ID"
 // @Success 200 {object} app.Response
@@ -198,6 +202,7 @@ func DeleteTag(c *gin.Context) {
 }
 
 // @Summary Export article tag
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param name body string false "Name"
 // @Param state body int false "State"
@@ -230,8 +235,10 @@ func ExportTag(c *gin.Context) {
 }
 
 // @Summary Import article tag
-// @Produce  json
-// @Param file body file true "Excel File"
+// @Security ApiKeyAuth
+// @Accept multipart/form-data
+// @Produce json
+// @Param file formData file true "Excel File"
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
 // @Router /api/v1/tags/import [post]

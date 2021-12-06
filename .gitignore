@@ -1,6 +1,11 @@
+# IDE dirs
 .idea/
 .DS_Store
 
+# runtime dirs
 runtime/*
 !runtime/qrcode/bg.jpg
 !runtime/fonts
+
+# config dirs
+conf/app.ini

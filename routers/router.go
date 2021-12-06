@@ -5,16 +5,16 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	_ "github.com/EDDYCJY/go-gin-example/docs"
-	"github.com/swaggo/gin-swagger"
+	_ "github.com/kasra73/fidibo-api/docs"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 
-	"github.com/EDDYCJY/go-gin-example/middleware/jwt"
-	"github.com/EDDYCJY/go-gin-example/pkg/export"
-	"github.com/EDDYCJY/go-gin-example/pkg/qrcode"
-	"github.com/EDDYCJY/go-gin-example/pkg/upload"
-	"github.com/EDDYCJY/go-gin-example/routers/api"
-	"github.com/EDDYCJY/go-gin-example/routers/api/v1"
+	"github.com/kasra73/fidibo-api/middleware/jwt"
+	"github.com/kasra73/fidibo-api/pkg/export"
+	"github.com/kasra73/fidibo-api/pkg/qrcode"
+	"github.com/kasra73/fidibo-api/pkg/upload"
+	"github.com/kasra73/fidibo-api/routers/api"
+	v1 "github.com/kasra73/fidibo-api/routers/api/v1"
 )
 
 // InitRouter initialize routing information
@@ -27,7 +27,7 @@ func InitRouter() *gin.Engine {
 	r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
 	r.StaticFS("/qrcode", http.Dir(qrcode.GetQrCodeFullPath()))
 
-	r.POST("/auth", api.GetAuth)
+	r.POST("/auth", api.Authenticate)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.POST("/upload", api.UploadImage)
 

@@ -5,10 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/app"
-	"github.com/EDDYCJY/go-gin-example/pkg/e"
-	"github.com/EDDYCJY/go-gin-example/pkg/logging"
-	"github.com/EDDYCJY/go-gin-example/pkg/upload"
+	"github.com/kasra73/fidibo-api/pkg/app"
+	"github.com/kasra73/fidibo-api/pkg/e"
+	"github.com/kasra73/fidibo-api/pkg/logging"
+	"github.com/kasra73/fidibo-api/pkg/upload"
 )
 
 // @Summary Import Image
@@ -16,7 +16,7 @@ import (
 // @Param image formData file true "Image File"
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
-// @Router /api/v1/tags/import [post]
+// @Router /upload [post]
 func UploadImage(c *gin.Context) {
 	appG := app.Gin{C: c}
 	file, image, err := c.Request.FormFile("image")

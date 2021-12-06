@@ -28,11 +28,11 @@ WriteTimeout = 60
 
 [database]
 Type = mysql
-User = root
-Password = rootroot
+User = fidibo_search
+Password = KfK0Jd32I3mtkCec
 Host = 127.0.0.1:3306
-Name = blog
-TablePrefix = blog_
+Name = fidibo_search
+TablePrefix = search_
 
 [redis]
 Host = 127.0.0.1:6379

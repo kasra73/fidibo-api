@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/e"
+	"github.com/kasra73/fidibo-api/pkg/e"
 )
 
 type Article struct {

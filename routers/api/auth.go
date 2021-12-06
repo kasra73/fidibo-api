@@ -6,10 +6,10 @@ import (
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/app"
-	"github.com/EDDYCJY/go-gin-example/pkg/e"
-	"github.com/EDDYCJY/go-gin-example/pkg/util"
-	"github.com/EDDYCJY/go-gin-example/service/auth_service"
+	"github.com/kasra73/fidibo-api/pkg/app"
+	"github.com/kasra73/fidibo-api/pkg/e"
+	"github.com/kasra73/fidibo-api/pkg/util"
+	"github.com/kasra73/fidibo-api/service/auth_service"
 )
 
 type auth struct {
@@ -17,14 +17,15 @@ type auth struct {
 	Password string `valid:"Required; MaxSize(50)"`
 }
 
-// @Summary Get Auth
-// @Produce  json
-// @Param username query string true "userName"
-// @Param password query string true "password"
+// @Summary	Authenticate
+// @Accept	x-www-form-urlencoded
+// @Produce	json
+// @Param username formData string true "username"
+// @Param password formData string true "password"
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
-// @Router /auth [get]
-func GetAuth(c *gin.Context) {
+// @Router /auth [post]
+func Authenticate(c *gin.Context) {
 	appG := app.Gin{C: c}
 	valid := validation.Validation{}
 

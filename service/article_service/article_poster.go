@@ -9,9 +9,9 @@ import (
 
 	"github.com/golang/freetype"
 
-	"github.com/EDDYCJY/go-gin-example/pkg/file"
-	"github.com/EDDYCJY/go-gin-example/pkg/qrcode"
-	"github.com/EDDYCJY/go-gin-example/pkg/setting"
+	"github.com/kasra73/fidibo-api/pkg/file"
+	"github.com/kasra73/fidibo-api/pkg/qrcode"
+	"github.com/kasra73/fidibo-api/pkg/setting"
 )
 
 type ArticlePoster struct {
